@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'PagesController@index');
+
+Auth::routes();
+
+Route::get('/home', 'PagesController@login');

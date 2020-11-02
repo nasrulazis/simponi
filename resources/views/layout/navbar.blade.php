@@ -1,4 +1,4 @@
-<header id="header" class="fixed-top">
+<header id="header" class="relative-top">
     <div class="container d-flex align-items-center">
 
       <h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>

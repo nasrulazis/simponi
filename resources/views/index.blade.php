@@ -2,7 +2,7 @@
 @section('title','Simponi')
 
 @section('container')
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" class="d-flex align-items-center mb-0">
         <div class="container">
             <h1>Selamat Datang!</h1>
             <h2>Cari produk hasil hidroponik disekitarmu!</h2>
@@ -10,13 +10,12 @@
         </div>
     </section>
     
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Katalog Section ======= -->
     <section id="services" class="services">
       <div class="container">
 
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="section-title mb-5 mt-0">
+          <h2>Katalog</h2>
         </div>
 
         <div class="row">

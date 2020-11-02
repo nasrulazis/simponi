@@ -14,6 +14,7 @@ class index extends Controller
     public function index()
     {
         //
+        return view('index');
     }
 
     /**
@@ -46,7 +47,7 @@ class index extends Controller
     public function show()
     {
         //
-        return view('index');
+        
     }
 
     /**
