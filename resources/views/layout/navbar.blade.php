@@ -8,8 +8,8 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="/">Home</a></li>
-          <li><a href="#services">Katalog</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="/#services">Katalog</a></li>
+          <li><a href="/#about">About</a></li>
           
 
           <!-- <li class="drop-down"><a href="">Drop Down</a>
@@ -29,7 +29,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="/#contact">Contact</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
