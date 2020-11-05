@@ -6,7 +6,7 @@
         <div class="container">
             <h1>Selamat Datang!</h1>
             <h2>Cari produk hasil hidroponik disekitarmu!</h2>
-            <a href="#about" class="btn-get-started scrollto">Cari produk</a>
+            <a href="#services" class="btn-get-started scrollto">Cari produk</a>
         </div>
     </section>
     
@@ -31,7 +31,8 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section>
+    <!-- End Services Section -->
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -68,5 +69,6 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 @endsection

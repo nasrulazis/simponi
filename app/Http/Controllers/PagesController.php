@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -14,6 +15,7 @@ class PagesController extends Controller
      */
     public function index()
     {
+        
         return view('index');
     }
 
@@ -25,5 +27,11 @@ class PagesController extends Controller
     public function katalog()
     {
         return view('katalog');
+    }
+
+    public function admin()
+    {
+        $pertumbuhan_tanaman = DB::table('pertumbuhan_tanaman')->get();
+        return view('admin', ['pertumbuhan_tanaman' => $pertumbuhan_tanaman]);
     }
 }

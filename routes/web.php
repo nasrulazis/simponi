@@ -15,3 +15,4 @@ Auth::routes();
 Route::get('/', 'PagesController@index');
 Route::get('/home', 'PagesController@login');
 Route::get('/katalog', 'PagesController@katalog');
+Route::get('/admin', 'PagesController@admin');
