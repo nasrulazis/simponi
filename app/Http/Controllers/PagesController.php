@@ -21,7 +21,7 @@ class PagesController extends Controller
 
     public function login()
     {
-        return view('home');
+        return view('login');
     }
 
     public function katalog()

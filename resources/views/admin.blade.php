@@ -34,7 +34,7 @@
                     <tbody>
                     @foreach($pertumbuhan_tanaman as $pertumbuhan)
                     <tr>
-                        <td>1</td>
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$pertumbuhan->tanggal_penanaman}}</td>
                         <td>{{$pertumbuhan->jenis_tanaman}}</td>
                         <td>{{$pertumbuhan->suhu_ruangan}}</td>

@@ -111,19 +111,14 @@
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li class="eborder-top">
+              <div class=""></div>
+              <li>
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                <a href="/keluar"><i class="icon_clock_alt"></i> Logout</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
-              <li>
-                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-              </li>
+              
               
             </ul>
           </li>

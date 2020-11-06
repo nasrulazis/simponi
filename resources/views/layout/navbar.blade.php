@@ -34,7 +34,7 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="/login" class="appointment-btn scrollto">Login/Register</a>
+      <a href="/home" class="appointment-btn scrollto">Login/Register</a>
 
     </div>
   </header><!-- End Header -->

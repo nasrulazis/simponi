@@ -45,6 +45,24 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'pembeli' => [
+            'driver' => 'session',
+            'provider' => 'pembeli',
+        ],
+
+        'apipembeli' => [
+            'driver' => 'token',
+            'provider' => 'pembeli',
+        ],
+        'penjual' => [
+            'driver' => 'session',
+            'provider' => 'penjual',
+        ],
+
+        'apipenjual' => [
+            'driver' => 'token',
+            'provider' => 'penjual',
+        ],
     ],
 
     /*
@@ -68,6 +86,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'pembeli' => [
+            'driver' => 'eloquent',
+            'model' => App\login_pembeli::class,
+        ],
+        'penjual' => [
+            'driver' => 'eloquent',
+            'model' => App\login_penjual::class,
         ],
 
         // 'users' => [
