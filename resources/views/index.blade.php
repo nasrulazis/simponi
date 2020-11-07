@@ -19,15 +19,15 @@
         </div>
 
         <div class="row">
-          <?php for($x = 0; $x <= 5; $x++):?>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-heartbeat"></i></div>
-              <h4><a href="/katalog">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          @foreach($katalog as $katalog_tumbuhan)
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+              <div class="icon-box" style="width:100%">
+                <div class="icon"><i class="icofont-heartbeat"></i></div>
+                <h4><a href="/katalog?id={{$katalog_tumbuhan->id}}">{{$katalog_tumbuhan->nama_tanaman}}</a></h4>
+                <p>Harga : {{$katalog_tumbuhan->harga}}</p>
+              </div>
             </div>
-          </div>
-          <?php endfor;?>
+          @endforeach
         </div>
 
       </div>

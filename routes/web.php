@@ -15,6 +15,7 @@ Auth::routes();
 Route::get('/', 'PagesController@index');
 Route::get('/home', 'PagesController@login');
 Route::get('/katalog', 'PagesController@katalog');
+Route::get('/daftar', 'PagesController@daftar');
 Route::get('/admin', 'PagesController@admin')->middleware('auth:penjual');
 
 Route::post('/kirimdata', 'LoginController@login');
