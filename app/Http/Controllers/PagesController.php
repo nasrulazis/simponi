@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\katalog;
+use App\pertumbuhan_tanaman;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -96,9 +97,33 @@ class PagesController extends Controller
             'nama_tanaman' => $kiriman->namatanaman,
             'stok' => $kiriman->stok,
             'harga' => $kiriman->harga,
+            'gambar' => NULL,
             'id_penjual' => 1
         ]);
-        return redirect()->back();
+        return redirect('/katalogAdmin');
     }
-
+    public function tambahPencatatan()
+    {
+        // dump(Auth::guest());
+        // dump(Auth::guard('penjual'));
+        $pertumbuhan_tanaman = DB::table('pertumbuhan_tanaman')->get();
+        return view('tambahPencatatan', ['pertumbuhan_tanaman' => $pertumbuhan_tanaman]);
+    }
+    public function tambahTanaman(Request $kiriman)
+    {
+        $this->validate($kiriman,[
+            'tanggal_penanaman' => 'required',
+            'suhu_ruangan' => 'required',
+            'nutrisi' => 'required',
+            'jenis_tanaman' => 'required'
+        ]);
+        katalog::create([
+            'tanggal_penanaman' => $kiriman->tanggal_penanaman,
+            'suhu_ruangan' => $kiriman->suhu_ruangan,
+            'nutrisi' => $kiriman->nutrisi,
+            'jenis_tanaman' => $kiriman->jenis_tanaman,
+            'id_penjual' => 1
+        ]);
+        return redirect('/pencatatan');
+    }
 }

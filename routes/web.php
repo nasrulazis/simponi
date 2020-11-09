@@ -34,5 +34,8 @@ Route::get('/pencatatan', 'PagesController@pencatatan')->middleware('auth:penjua
 Route::get('/katalogAdmin', 'PagesController@katalogAdmin')->middleware('auth:penjual');
 Route::get('/tambahkatalogAdmin', 'PagesController@tambahkatalogAdmin')->middleware('auth:penjual')->name('tambahKatalog');
 Route::get('/tambahKatalog', 'PagesController@tambahKatalog')->middleware('auth:penjual');
+Route::get('/tambahPencatatan', 'PagesController@tambahPencatatan')->middleware('auth:penjual')->name('tambahPencatatan');
+Route::get('/tambahTanaman', 'PagesController@tambahTanaman')->middleware('auth:penjual');
+
 
 

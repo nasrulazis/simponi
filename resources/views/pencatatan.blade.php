@@ -46,7 +46,7 @@
                     </tbody>
                 </table>
                 </section>
-                <button class="btn btn-success">Tambah Data</button>
+                <a href="{{route('tambahPencatatan')}}"><button class="btn btn-success">Tambah Data</button></a>
             </div>
         </section>
     </section>
