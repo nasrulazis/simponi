@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateKatalog extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('pembeli', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('nama_tanaman');
+            $table->string('stok');
+            $table->string('harga');
+            $table->string('id_penjual');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembeli');
+        //
     }
 }

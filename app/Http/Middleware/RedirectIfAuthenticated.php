@@ -21,11 +21,11 @@ class RedirectIfAuthenticated
         //     return redirect('/home');
         // }
         if (Auth::guard('pembeli')->check()) {
-            return redirect('/pembeli');
+            return redirect()->route('pembeli');
         }else if(Auth::guard('penjual')->check()){
-            return redirect('/penjual');
+            return redirect()->route('admin');
         }else{
-            return redirect('/');
+            return redirect()->route('halamanLogin');
         }
         return $next($request);
     }

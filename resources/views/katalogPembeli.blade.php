@@ -1,16 +1,16 @@
 @extends('layout/main')
 @section('title','Simponi')
 @section('navbar')
-<h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
+    <h1 class="logo mr-auto"><a href="/pembeli" class="text-success">Simponi</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/#services">Katalog</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li class="active"><a href="/pembeli">Home</a></li>
+          <li><a href="/pembeli#services">Katalog</a></li>
+          <li><a href="/pembeli#about">About</a></li>
+          <li><a href="/pembeli#contact">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->
-    <a href="{{route('halamanLogin')}}" class="appointment-btn scrollto">Login/Register</a>
+    <a href="/keluar" class="btn scrollto btn-light">Log Out</a>
 @endsection
 @section('container')
 <section id="services" class="services">
@@ -35,7 +35,7 @@
                         <p>Sisa Stock : </p> <p class="h5">Stock Terbatas<{{$katalog_tumbuhan->stok}}</p>
                     </div>
                     <br><br>
-                    <a href="/home"><button type="button" class="btn btn-success">Beli Sekarang</button></a>
+                    <a href=""><button type="button" class="btn btn-success">Beli Sekarang</button></a>
                 </div>
                 
                 @endforeach

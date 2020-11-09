@@ -1,33 +1,16 @@
 @extends('layout/main')
 @section('title','Simponi')
 @section('navbar')
-<h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
+    <h1 class="logo mr-auto"><a href="/pembeli" class="text-success">Simponi</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/#services">Katalog</a></li>
-          <li><a href="/#about">About</a></li>
-          <!-- <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-          <li><a href="/#contact">Contact</a></li>
+          <li class="active"><a href="/pembeli">Home</a></li>
+          <li><a href="/pembeli#services">Katalog</a></li>
+          <li><a href="/pembeli#about">About</a></li>
+          <li><a href="/pembeli#contact">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->
-    <a href="{{route('halamanLogin')}}" class="appointment-btn scrollto">Login/Register</a>
+    <a href="/keluar" class="btn scrollto btn-light">Log Out</a>
 @endsection
 @section('container')
     <section id="hero" class="d-flex align-items-center mb-0">
@@ -51,7 +34,7 @@
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
               <div class="icon-box" style="width:100%">
                 <div class="icon"><i class="icofont-heartbeat"></i></div>
-                <h4><a href="/katalog?id={{$katalog_tumbuhan->id}}">{{$katalog_tumbuhan->nama_tanaman}}</a></h4>
+                <h4><a href="/katalogPembeli?id={{$katalog_tumbuhan->id}}">{{$katalog_tumbuhan->nama_tanaman}}</a></h4>
                 <p>Harga : {{$katalog_tumbuhan->harga}}</p>
               </div>
             </div>

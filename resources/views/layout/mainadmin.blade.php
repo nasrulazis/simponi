@@ -73,7 +73,7 @@
 
           
           <!-- inbox notificatoin start-->
-          <li id="mail_notificatoin_bar" class="dropdown">
+          <!-- <li id="mail_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
                             <span class="badge bg-important">0</span>
@@ -99,14 +99,14 @@
                 <a href="#">See all messages</a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!-- inbox notificatoin end -->          
           <!-- user login dropdown start-->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
+                            <!-- <span class="profile-ava">
                                 <img alt="" src="img/avatar1_small.jpg">
-                            </span>
+                            </span> -->
                             <span class="username">Jenifer Smith</span>
                             <b class="caret"></b>
                         </a>
@@ -134,14 +134,14 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
+          <li class="">
             <a class="" href="/admin">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
           </li>
           <li class="sub-menu">
-                <a href="/admin" class="">
+                <a href="/pencatatan" class="">
                           <i class="icon_document_alt"></i>
                           <span>Pencatatan</span>                          
                 </a>
@@ -149,14 +149,7 @@
           
 
           <li class="sub-menu">
-            <a href="" class="">
-                          <i class="icon_table"></i>
-                          <span>Pencatatan</span>
-                      </a>
-          </li>
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+            <a href="/katalogAdmin" class="">
                           <i class="icon_documents_alt"></i>
                           <span>Katalog</span>
                       </a>

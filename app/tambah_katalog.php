@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class login_pembeli extends Authenticatable
+class tambah_katalog extends Authenticatable
 {
-    protected $table='pembeli';
-    
+    use Notifiable;
+    protected $table='katalog';
 }
