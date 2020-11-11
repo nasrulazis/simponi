@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\penjual;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -18,19 +19,38 @@ class LoginController extends Controller
             'username' => 'required|min:4',
             'password' => 'required|min:6'
         ]);
-        $data1= pembeli::where('username', $kiriman->username)->where('password', $kiriman->password)->get();
-        $data2= penjual::where('username', $kiriman->username)->where('password', $kiriman->password)->get();
-        // dd($data2);
+        $data1= pembeli::where('username', $kiriman->username)->get();
+        $data2= penjual::where('username', $kiriman->username)->get();
+        $password1=$data1->makeVisible('password')->toArray();
+        $password2=$data2->makeVisible('password')->toArray();
+        // var_dump($password1[0]['password']);
+        // dd(Hash::check($kiriman->password, $password1[0]['password']));
         if (count($data1)>0) {
             # login pembeli
-            Auth::guard('pembeli')->LoginUsingId($data1[0]['id']);
-            return redirect()->route('pembeli');
+            if (Hash::check($kiriman->password, $password1[0]['password'])) {
+                Auth::guard('pembeli')->LoginUsingId($data1[0]['id']);
+                return redirect()->route('pembeli');
+            } else {
+                echo "<script type='text/javascript'>alert('username/password salah');</script>";
+                return redirect()->route('halamanLogin');
+                
+            }
+            
+            
         }elseif (count($data2)>0) {
             # login penjual
-            Auth::guard('penjual')->LoginUsingId($data2[0]['id']);
+            if (Hash::check($kiriman->password, $password2[0]['password'])) {
+                Auth::guard('penjual')->LoginUsingId($data2[0]['id']);
             return redirect()->route('admin');
+            } else {
+                echo "<script type='text/javascript'>alert('username/password salah penjual');</script>";
+                
+            }
+            
         }else {
             # code...
+           
+            echo "<script type='text/javascript'>alert('username/password salah');</script>";
             return redirect()->back();
         }
     }
@@ -65,12 +85,19 @@ class LoginController extends Controller
             'nama' => $kiriman->name,
             'username' => $kiriman->username,
             'email' => $kiriman->email,
-            'password' => bcrypt($kiriman->password),
+            'password' => Hash::make($kiriman->password),
             'alamat' => NULL,
             'no_hp' => NULL,
             'jenis_kelamin' => NULL,
             'remember_token' => NULL
         ]);
+        // penjual::create([
+        //     'nama' => $kiriman->name,
+        //     'username' => $kiriman->username,
+        //     'email' => $kiriman->email,
+        //     'password' => Hash::make($kiriman->password),
+        //     'remember_token' => NULL
+        // ]);
         return redirect()->back();
     }
 }
