@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    
 
 
     function login(Request $kiriman){
@@ -51,7 +52,7 @@ class LoginController extends Controller
             # code...
            
             echo "<script type='text/javascript'>alert('username/password salah');</script>";
-            return redirect()->back();
+            return redirect()->route('login');
         }
     }
 

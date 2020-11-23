@@ -1,40 +1,10 @@
 @extends('layout/main')
 @section('title','Simponi')
-@section('navbar')
-<h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/#services">Katalog</a></li>
-          <li><a href="/#about">About</a></li>
-          <!-- <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    <a href="{{route('halamanLogin')}}" class="appointment-btn scrollto">Login/Register</a>
-@endsection
+
 @section('container')
     <section id="hero" class="d-flex align-items-center mb-0">
         <div class="container">
-            <h1>Selamat Datang!</h1>
-            <h2>Cari produk hasil hidroponik disekitarmu!</h2>
-            <a href="#services" class="btn-get-started scrollto">Cari produk</a>
+            <h1 class="text-center">SIMPONI</h1>
         </div>
     </section>
     
@@ -42,19 +12,29 @@
     <section id="services" class="services">
       <div class="container">
 
-        <div class="section-title mb-5 mt-0">
+        <!-- <div class="section-title mb-5 mt-0">
           <h2>Katalog</h2>
-        </div>
+        </div> -->
 
         <div class="row">
           @foreach($katalog as $katalog_tumbuhan)
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 justify-content-center">
+            <a href="/katalog?id={{$katalog_tumbuhan->id}}">
               <div class="icon-box" style="width:100%">
-                <div class="icon"><i class="icofont-heartbeat"></i></div>
-                <h4><a href="/katalog?id={{$katalog_tumbuhan->id}}">{{$katalog_tumbuhan->nama_tanaman}}</a></h4>
-                <p>Harga : {{$katalog_tumbuhan->harga}}</p>
+                <div class="image">
+                  <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
+                </div>
+                <div class="deskripsi">
+                <h4>{{$katalog_tumbuhan->nama_tanaman}}</h4>
+                <p>Rp<?php
+                $number=$katalog_tumbuhan->harga;
+                echo number_format(floatval($number))?></p>
+                </div>
               </div>
+              </a>
             </div>
+          
           @endforeach
         </div>
 
@@ -71,27 +51,21 @@
             
           </div>
 
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-            <h3>About us</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5 shadow p-3 mb-5 mt-4 bg-white rounded">
+            <h3>APA ITU SIMPONI?</h3>
+            <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.
 
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."</p>
+            <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.
+
+              Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."</p>
+
+            <!-- <div class="icon-box">
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
+            </div> -->
 
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Dine Pad</a></h4>
-              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-            </div>
+            
 
           </div>
         </div>

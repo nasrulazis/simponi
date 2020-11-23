@@ -3,14 +3,30 @@
 @section('navbar')
     <h1 class="logo mr-auto"><a href="/pembeli" class="text-success">Simponi</a></h1>
       <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/pembeli">Home</a></li>
-          <li><a href="/pembeli#services">Katalog</a></li>
-          <li><a href="/pembeli#about">About</a></li>
-          <li><a href="/pembeli#contact">Contact</a></li>
+        <ul>          
+          <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                              <!-- <span class="profile-ava">
+                                  <img alt="" src="img/avatar1_small.jpg">
+                              </span> -->
+                              <span class="username">Setting</span>
+                              <b class="caret"></b>
+                          </a>
+              <ul class="dropdown-menu extended logout">
+                <div class=""></div>
+                <li>
+                  <a href="route{{'profil'}}"><i class="icon_profile"></i> My Profile</a>
+                </li>
+                <li>
+                  <a href="/keluar" class=" btn-light">Log Out</a>
+                </li>
+                
+                
+              </ul>
+            </li>
         </ul>
       </nav><!-- .nav-menu -->
-    <a href="/keluar" class="btn scrollto btn-light">Log Out</a>
+    
 @endsection
 @section('container')
     <section id="hero" class="d-flex align-items-center mb-0">

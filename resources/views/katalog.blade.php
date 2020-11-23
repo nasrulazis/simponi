@@ -1,43 +1,44 @@
 @extends('layout/main')
 @section('title','Simponi')
-@section('navbar')
-<h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/#services">Katalog</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    <a href="{{route('halamanLogin')}}" class="appointment-btn scrollto">Login/Register</a>
-@endsection
 @section('container')
 <section id="services" class="services">
-    <div class="container">
-        <div class="row">
+    <div class="container shadow p-4">
+        <div class="row my-4">
             @foreach($katalog as $katalog_tumbuhan)
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                
-                    <div class="icon-box" style="width:100%">
-                    <div class="icon"><i class="icofont-heart-beat"></i></div>
-                    <h4><a href="/katalog">{{$katalog_tumbuhan->nama_tanaman}}</a></h4>
-                    <p>Harga : {{$katalog_tumbuhan->harga}}</p>
-                    </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 justify-content-center mb-4">
+              <div class="icon-box" style="width:100%">
+                <div class="image shadow">
+                  <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
                 </div>
+              </div>
+            </div>
                 <div class="description col-lg-6">
-                        <h1 class="font-weight-bold">{{$katalog_tumbuhan->nama_tanaman}}</h1><br>
-                        <hr>
-                    <div class="harga">
-                        <p>Harga : </p><h2>Rp. {{$katalog_tumbuhan->harga}}</h2>
-                    </div>
-                    <div class="stock">
-                        <p>Sisa Stock : </p> <p class="h5">Stock Terbatas<{{$katalog_tumbuhan->stok}}</p>
-                    </div>
-                    <br><br>
-                    <a href="/home"><button type="button" class="btn btn-success">Beli Sekarang</button></a>
+                <h1 class="font-weight-bold mb-3">{{$katalog_tumbuhan->nama_tanaman}}</h1>
+                  <table id="tabelkatalog">
+                    
+                    
+                    <tr class="d-flex">
+                      <td class="col-2"><p class="text-muted m-1 my-3">Harga</p></td>
+                      <td class="col-10">
+                      <h2> Rp<?php
+                      $number=$katalog_tumbuhan->harga;
+                      echo number_format(floatval($number))?></h2>
+                      </td>
+                    </tr>
+
+                    <tr class="d-flex">
+                      <td class="col-2"><p class="text-muted m-1 my-2">Jumlah</p></td>
+                      <td class="col-10">1</td>
+                    </tr>
+
+                    <tr class="d-flex">
+                      <td class="col-2"><p class="text-muted m-1 my-3">Info Produk</p></td>
+                      <td class="col-10"><p class="text-muted m-0">Stok</p><h4>Tersedia</h4></td>
+                    </tr>   
+                                                                                         
+                  </table>
+                  <a href="/home"><button type="button" class="btn btn-success mt-4">+ Keranjang</button></a>
                 </div>
-                
                 @endforeach
         </div>
     </div>

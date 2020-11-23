@@ -41,6 +41,11 @@ class PagesController extends Controller
         // dump(Auth::guest());
         return view('register');
     }
+    public function reset()
+    {
+        // dump(Auth::guest());
+        return view('reset_password');
+    }
 
     //pembeli
     public function pembeli()
@@ -49,7 +54,7 @@ class PagesController extends Controller
         // dump(Auth::guard('penjual'));
         // dump(Auth::guard('pembeli'));
         $katalog = DB::table('katalog')->get();
-        return view('pembeli', ['katalog' => $katalog]);
+        return view('index', ['katalog' => $katalog]);
     }
     public function katalogPembeli()
     {
@@ -80,28 +85,7 @@ class PagesController extends Controller
         $katalog_tanaman = DB::table('katalog')->get();
         return view('katalogAdmin', ['katalog_tanaman' => $katalog_tanaman]);
     }
-    public function tambahkatalogAdmin()
-    {
-        // dump(Auth::guest());
-        $katalog_tanaman = DB::table('katalog')->get();
-        return view('tambahkatalogAdmin', ['katalog_tanaman' => $katalog_tanaman]);
-    }
-    public function tambahKatalog(Request $kiriman)
-    {
-        $this->validate($kiriman,[
-            'namatanaman' => 'required|min:4',
-            'stok' => 'required',
-            'harga' => 'required|min:3'
-        ]);
-        katalog::create([
-            'nama_tanaman' => $kiriman->namatanaman,
-            'stok' => $kiriman->stok,
-            'harga' => $kiriman->harga,
-            'gambar' => NULL,
-            'id_penjual' => 1
-        ]);
-        return redirect('/katalogAdmin');
-    }
+    
     public function tambahPencatatan()
     {
         // dump(Auth::guest());
@@ -117,13 +101,20 @@ class PagesController extends Controller
             'nutrisi' => 'required',
             'jenis_tanaman' => 'required'
         ]);
-        katalog::create([
+        pertumbuhan_tanaman::create([
             'tanggal_penanaman' => $kiriman->tanggal_penanaman,
             'suhu_ruangan' => $kiriman->suhu_ruangan,
             'nutrisi' => $kiriman->nutrisi,
             'jenis_tanaman' => $kiriman->jenis_tanaman,
             'id_penjual' => 1
         ]);
+        return redirect('/pencatatan');
+    }
+    public function hapusTanaman()
+    {
+        $katalog_tanaman = DB::table('pertumbuhan_tanaman')->get();
+        $id = $_GET['id'];
+        pertumbuhan_tanaman::destroy(array($id));
         return redirect('/pencatatan');
     }
 }

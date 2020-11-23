@@ -20,13 +20,14 @@ class RedirectIfAuthenticated
         // if (Auth::guard($guard)->check()) {
         //     return redirect('/home');
         // }
+
         if (Auth::guard('pembeli')->check()) {
             return redirect()->route('pembeli');
         }else if(Auth::guard('penjual')->check()){
             return redirect()->route('admin');
         }else{
-            return redirect()->route('halamanLogin');
+            return $next($request);
         }
-        return $next($request);
+        
     }
 }

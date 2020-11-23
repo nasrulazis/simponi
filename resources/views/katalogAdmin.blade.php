@@ -40,7 +40,7 @@
                         <td>{{$katalog->stok}}</td>
                         <td>{{$katalog->harga}}</td>
                         <td>{{$katalog->gambar}}</td>
-                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <a href="hapusKatalog?id={{$katalog->id}}"><button class="btn btn-danger">Hapus</button></td></a>
                     </tr>
                     @endforeach
                     </tbody>

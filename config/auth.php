@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'pembeli',
     ],
 
     /*
@@ -83,10 +83,6 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
         'pembeli' => [
             'driver' => 'eloquent',
             'model' => App\login_pembeli::class,
@@ -96,10 +92,10 @@ return [
             'model' => App\login_penjual::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
     ],
 
     /*
@@ -118,11 +114,17 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'pembeli' => [
+            'provider' => 'pembeli',
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'penjual' => [
+            'provider' => 'penjual',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        
     ],
 
 ];

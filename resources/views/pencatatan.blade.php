@@ -40,7 +40,7 @@
                         <td>{{$pertumbuhan->jenis_tanaman}}</td>
                         <td>{{$pertumbuhan->suhu_ruangan}}</td>
                         <td>{{$pertumbuhan->nutrisi}}</td>
-                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <a href="hapusTanaman?id={{$pertumbuhan->id}}"><button class="btn btn-danger">Hapus</button></a></td>
                     </tr>
                     @endforeach
                     </tbody>

@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
   padding: 15px 0;
   top: 40px;
-  box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0,0.1);
 }
 
 #header.header-scrolled {
@@ -169,7 +169,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
   padding: 5px 2px;
-  border-bottom: 2px solid #fff;
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
@@ -386,13 +385,13 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-active .mobile-nav-toggle i {
   color: #fff;
 }
-
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  z-index: -1;
   width: 100%;
-  height: 90vh;
+  height: 30vh;
   background: url("../img/background_index.png") top center;
   background-size: cover;
   position: relative;
@@ -401,15 +400,16 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .container {
   position: relative;
+  
 }
 
 #hero h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 96px;
   font-weight: 700;
   line-height: 56px;
   text-transform: uppercase;
-  color: #2c6431;
+  color: #58a962;
 }
 
 #hero h2 {
@@ -440,20 +440,24 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
+    
   }
 }
 
 @media (max-width: 992px) {
   #hero {
     margin-bottom: 0;
-    height: 100vh;
+    height: 25vh;
+    
   }
   #hero .container {
-    padding-bottom: 63px;
+    /* padding-bottom: 63px; */
+    
   }
   #hero h1 {
-    font-size: 28px;
+    font-size: 58px;
     line-height: 36px;
+    
   }
   #hero h2 {
     font-size: 18px;
@@ -786,11 +790,19 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+
+.services .row{
+  justify-content: space-around;
+}
 .services .icon-box {
-  text-align: center;
+  text-align: left;
+  max-height: 400px;
+  max-width: 350px;
+  flex-shrink: 0;
   border: 1px solid #d5e1ed;
-  padding: 80px 20px;
+  border-radius: 10px 10px 0px 0px;
   transition: all ease-in-out 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0,0.2);
 }
 
 .services .icon-box .icon {
@@ -811,6 +823,19 @@ section {
   color: #fff;
   font-size: 28px;
 }
+.services .icon-box .deskripsi {
+  margin: 15px;
+  color: rgb(56, 56, 56);
+}
+.services .icon-box img {
+  width: 100%;
+  margin: -10% 0;
+  
+}
+.services .icon-box .image {
+  overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
+}
 
 .services .icon-box .icon::before {
   position: absolute;
@@ -828,6 +853,7 @@ section {
 .services .icon-box h4 {
   font-weight: 700;
   margin-bottom: 15px;
+  margin-top: 15px;
   font-size: 24px;
 }
 
@@ -841,13 +867,38 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box:hover {
-  background: #04c42e;
-  border-color:  #04c42e;
+.services a:hover{
+  color: #108d2b;
 }
+.services .icon-box:hover {
+  background: #669169;
+  border-color:  #669169;
+}
+.services #profil {
+  box-shadow: 0px 0px 0px rgb(0, 0, 0);
+  }
+#tabelkatalog tr td{
+  border-top: 0.1px solid rgb(179, 179, 179);
+  }
+#tabelkatalog{
+  width: 100%;
+  }
+.services #profil:hover {
+background: #ffffff;
+}
+.services #profil:hover img{
+opacity: 1;
+}
+
 
 .services .icon-box:hover .icon {
   background: #fff;
+}
+.services .icon-box:hover img {
+  opacity: 0.9;
+}
+.services .icon-box:hover h4 {
+  color: white;
 }
 
 .services .icon-box:hover .icon i {
@@ -855,7 +906,7 @@ section {
 }
 
 .services .icon-box:hover .icon::before {
-  background: #19cc55;
+  background: #edf0ee;
 }
 
 .services .icon-box:hover h4 a, .services .icon-box:hover p {
