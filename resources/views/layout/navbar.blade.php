@@ -10,18 +10,33 @@
           <li><a href="{{route('halamanDaftar')}}" class="btn btn-success rounded-pill px-4 text-white scrollto">Daftar</a></li>
           
           @else
-          <div class="dropdown d-flex align-items-center">
+          <div class="dropdown d-flex align-items-center" >
+          <?php
+          $pemesanan = \App\pemesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+          $total_pemesanan=$pemesanan->total_harga;
+          $detail=\App\detailpemesanan::where('pesanan_id',$pemesanan->id)->get();
+          $katalog=\App\katalog::All();
+          ?>
             <a class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="fa-stack" style="vertical-align: middle;">
               <!-- <i class="far fa-circle fa-stack-2x fa-xs"></i> -->
               <i class="fas fa-shopping-cart fa-stack-1x fa-lg" ></i>
             </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <p class="dropdown-item m-0" href="#">Barang1 10</p>
-              <p class="dropdown-item m-0" href="#">Barang2 10</p>
-              <p class="dropdown-item m-0" href="#">Barang3 10</p>
-              
+            <div class="dropdown-menu dropdown-menu-right" style="width:250px" aria-labelledby="dropdownMenuButton">
+            
+            <p class="dropdown-item m-0 d-flex justify-content-between font-weight-bold">Keranjang</p>
+            @foreach($detail as $key => $data)
+              <?php
+              $katalog=\App\katalog::where('id',$data->katalog_id)->first();
+              $katalognama=$katalog->nama_tanaman;              
+              ?>
+              <p class="dropdown-item m-0 d-flex justify-content-between" href="#">{{$data->jumlah}} {{$katalognama}} <b>{{number_format(floatval($data->harga))}}</b> </p>
+            @endforeach
+              <p class="dropdown-item m-0 d-flex justify-content-between" href="#">Total <b> Rp{{number_format(floatval($total_pemesanan))}}</b></p>
+              <p class="dropdown-item m-0 d-flex justify-content-end"><button class="btn btn-success">CheckOut</button></b></p>
+            
+
               
             </div>
           </div>            
