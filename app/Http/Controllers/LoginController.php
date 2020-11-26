@@ -79,7 +79,7 @@ class LoginController extends Controller
         $this->validate($kiriman,[
             'name' => 'required|min:4',
             'username' => 'required|min:4',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:pembeli',
             'password' => 'required|min:6|confirmed'
         ]);
         pembeli::create([

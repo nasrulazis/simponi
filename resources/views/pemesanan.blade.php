@@ -39,10 +39,17 @@
                       <h4>Tersedia</h4>
                       </div>
                       </td>
+                    </tr>
+                    <form action="{{route('pemesanan')}}?id={{$katalog_tumbuhan->id}}" method="post">
+                    @csrf
+                    <tr class="d-flex">
+                      <td class="col-2 d-flex align-items-center"><p class="text-muted mb-0">Jumlah Pesanan</p></td>
+                      <td class="col-10"><input type="number" name="jumlah" placeholder="Jumlah Pesanan" class="form-control"></td>
                     </tr>   
                     </tbody>                                                             
                   </table>
-                  <a href="{{route('pemesanan')}}?id={{$katalog_tumbuhan->id}}"><button type="button" class="btn btn-success">+ Keranjang</button></a>
+                  <input type="submit" class="btn btn-success" value="+ Keranjang">
+                  </form>
                 </div>
                 @endforeach
         </div>

@@ -6,6 +6,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <script src="https://kit.fontawesome.com/6e3c04dd1f.js" crossorigin="anonymous"></script>  
+
     <title>@yield('title')</title>
     <link href="{{('assets/css/style.css')}}" rel="stylesheet">
   </head>

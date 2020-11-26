@@ -15,9 +15,8 @@ class C_KatalogTanaman extends Controller
     
     public function katalogAdmin()
     {
-        // dump(Auth::guest());
-        $katalog_tanaman = DB::table('katalog')->get();
-        return view('katalogAdmin', ['katalog_tanaman' => $katalog_tanaman]);
+        $katalog_tanaman = katalog::paginate(20);        
+        return view('katalogAdmin', compact('katalog_tanaman'));
     }
     
     public function tambahkatalogAdmin()
@@ -42,6 +41,33 @@ class C_KatalogTanaman extends Controller
         ]);
         return redirect('/katalogAdmin');
     }
+
+    public function edit()
+    {
+        $id = $_GET['id'];
+        $katalog_tanaman=katalog::where('id',$id)->get();
+        return view('editkatalogAdmin', ['katalog_tanaman' => $katalog_tanaman]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request,[
+            'namatanaman' => 'required|min:4',
+            'stok' => 'required',
+            'harga' => 'required|min:3'
+        ]);
+        $id = $_GET['id'];
+        $katalog=katalog::find($id);
+        $katalog->nama_tanaman = $request->namatanaman;
+        $katalog->stok = $request->stok;
+        $katalog->harga = $request->harga;
+        $katalog->gambar = NULL;
+        $katalog->id_penjual = 1;
+        $katalog->save();
+
+        return redirect('/katalogAdmin');
+    }
+
     public function hapusKatalog()
     {
         $katalog_tanaman = DB::table('katalog')->get();

@@ -24,4 +24,9 @@ class pembeli extends Model
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function pemesanan()
+    {
+        return $this->hasMany('App\pemesanan','user_id','id');
+    }
 }

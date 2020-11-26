@@ -24,4 +24,8 @@ class katalog extends Model
     protected $hidden = [
         
     ];
+    public function detailpemesanan()
+    {
+        return $this->hasMany('App\detailpemesanan','katalog_id','id');
+    }
 }

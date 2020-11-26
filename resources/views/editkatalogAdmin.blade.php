@@ -29,32 +29,35 @@
                                     </header>
                                     <div class="panel-body">
                                         <div class="form">
-                                        <form class="form-validate form-horizontal" id="feedback_form" method="get" action="/tambahKatalog">
+                                        @foreach($katalog_tanaman as $key =>$data)
+                                        <form class="form-validate form-horizontal" id="feedback_form" method="post" action="{{route('editkatalog')}}?id={{$data->id}}">
+                                        @csrf
                                             <div class="form-group ">
                                             <label for="cname" class="control-label col-lg-2">Nama Tanaman <span class="required">*</span></label>
                                             <div class="col-lg-10">
-                                                <input class="form-control"  name="namatanaman" minlength="5" type="text" required />
+                                                <input class="form-control"  name="namatanaman" minlength="5" type="text" required value="{{$data->nama_tanaman}}"/>
                                             </div>
                                             </div>
                                             <div class="form-group ">
                                             <label for="cemail" class="control-label col-lg-2">Stok <span class="required">*</span></label>
                                             <div class="col-lg-10">
-                                                <input class="form-control "  type="number" name="stok" required />
+                                                <input class="form-control "  type="number" name="stok" required value="{{$data->stok}}"/>
                                             </div>
                                             </div>
                                             <div class="form-group ">
                                             <label for="curl" class="control-label col-lg-2">Harga<span class="required">*</span></label>
                                             <div class="col-lg-10">
-                                                <input class="form-control "  type="text" name="harga" />
+                                                <input class="form-control "  type="text" name="harga" value="{{$data->harga}}"/>
                                             </div>
                                             </div>
                                             <div class="form-group">
                                             <div class="col-lg-offset-2 col-lg-10">
-                                                <button class="btn btn-primary" type="submit">Tambah Data</button>
+                                                <button class="btn btn-primary" type="submit">Edit Data</button>
                                                 <button class="btn btn-default" type="reset">Cancel</button>
                                             </div>
                                             </div>
                                         </form>
+                                        @endforeach
                                         </div>
 
                                     </div>

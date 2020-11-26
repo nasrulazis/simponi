@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+
 //guest
 
 Route::get('/', 'PagesController@index')->middleware('guest');
@@ -28,19 +28,26 @@ Route::get('/reset', 'PagesController@reset')->name('reset');
 //pembeli
 Route::get('/pembeli', 'PagesController@pembeli')->name('pembeli')->middleware('auth:pembeli');
 Route::get('/katalogPembeli', 'PagesController@katalogPembeli')->name('katalogPembeli')->middleware('auth:pembeli');
-Route::get('/profil', 'C_Profil@index')->name('profil')->middleware('auth:pembeli');
+Route::get('/profil', 'C_Profil@index')->name('profil');
+Route::post('/ubahprofil', 'C_Profil@update')->name('updateprofil');
+Route::get('/pemesanan', 'C_Pemesanan@index')->name('pemesanan');
+Route::post('/pemesanan', 'C_Pemesanan@store')->name('pemesanan');
 
 
 //penjual
 Route::get('/admin', 'PagesController@admin')->middleware('auth:penjual')->name('admin');
 Route::get('/pencatatan', 'PagesController@pencatatan')->middleware('auth:penjual')->name('pencatatan');
-Route::get('/katalogAdmin', 'C_KatalogTanaman@katalogAdmin');
+Route::get('/editkatalogAdmin', 'C_KatalogTanaman@edit')->name('editkatalog');
+Route::post('/editkatalogAdmin', 'C_KatalogTanaman@update')->name('editkatalog');
+Route::get('/katalogAdmin', 'C_KatalogTanaman@katalogAdmin')->name('katalogadmin');
 Route::get('/tambahkatalogAdmin', 'C_KatalogTanaman@tambahkatalogAdmin')->name('tambahKatalog');
 Route::get('/tambahKatalog', 'C_KatalogTanaman@tambahKatalog');
 Route::get('/hapusKatalog', 'C_KatalogTanaman@hapusKatalog');
-Route::get('/hapusTanaman', 'PagesController@hapusTanaman')->middleware('auth:penjual');
-Route::get('/tambahPencatatan', 'PagesController@tambahPencatatan')->middleware('auth:penjual')->name('tambahPencatatan');
-Route::get('/tambahTanaman', 'PagesController@tambahTanaman')->middleware('auth:penjual');
+Route::get('/hapusTanaman', 'C_PertumbuhanTanaman@destroy')->middleware('auth:penjual');
+Route::get('/tambahPencatatan', 'C_PertumbuhanTanaman@create')->middleware('auth:penjual')->name('tambahPencatatan');
+Route::post('/tambahTanaman', 'C_PertumbuhanTanaman@store')->middleware('auth:penjual');
+Route::get('/editTanaman', 'C_PertumbuhanTanaman@edit')->middleware('auth:penjual')->name('editTanaman');
+Route::post('/editTanaman', 'C_PertumbuhanTanaman@update')->middleware('auth:penjual')->name('editTanaman');
 
 
 

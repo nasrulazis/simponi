@@ -16,7 +16,7 @@
         
             <!-- page start-->
             <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <section class="panel">
                 <header class="panel-heading">
                     Pencatatan Hidroponik
@@ -40,13 +40,13 @@
                         <td>{{$pertumbuhan->jenis_tanaman}}</td>
                         <td>{{$pertumbuhan->suhu_ruangan}}</td>
                         <td>{{$pertumbuhan->nutrisi}}</td>
-                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <a href="hapusTanaman?id={{$pertumbuhan->id}}"><button class="btn btn-danger">Hapus</button></a></td>
+                        <td class="text-right"><a href="{{route('editTanaman')}}?id={{$pertumbuhan->id}}"><button class="btn btn-warning">Ubah</button></a> <a href="hapusTanaman?id={{$pertumbuhan->id}}"><button class="btn btn-danger">Hapus</button></a></td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
                 </section>
-                <a href="{{route('tambahPencatatan')}}"><button class="btn btn-success">Tambah Data</button></a>
+                <a href="{{route('tambahPencatatan')}}"><button class="btn btn-primary">Tambah Data</button></a>
             </div>
         </section>
     </section>

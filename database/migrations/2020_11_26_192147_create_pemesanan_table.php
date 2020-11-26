@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKatalog extends Migration
+class CreatePemesananTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateKatalog extends Migration
      */
     public function up()
     {
-        Schema::create('katalog', function (Blueprint $table) {
+        Schema::create('pemesanan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_tanaman',20);
-            $table->integer('stok');
-            $table->integer('harga');
-            $table->binary('gambar')->nullable();
-            $table->integer('id_penjual');
-            $table->rememberToken();
+            $table->integer('user_id');
+            $table->date('tanggal');
+            $table->integer('total_harga');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateKatalog extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pemesanan');
     }
 }

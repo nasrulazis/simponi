@@ -16,7 +16,7 @@
         
             <!-- page start-->
             <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <section class="panel">
                 <header class="panel-heading">
                     Katalog
@@ -40,13 +40,13 @@
                         <td>{{$katalog->stok}}</td>
                         <td>{{$katalog->harga}}</td>
                         <td>{{$katalog->gambar}}</td>
-                        <td class="text-right"><button class="btn btn-warning">Ubah</button> <a href="hapusKatalog?id={{$katalog->id}}"><button class="btn btn-danger">Hapus</button></td></a>
+                        <td class="text-right"><a href="{{route('editkatalog')}}?id={{$katalog->id}}"><button class="btn btn-warning">Ubah</button></a> <a href="hapusKatalog?id={{$katalog->id}}"><button class="btn btn-danger">Hapus</button></td></a>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
                 </section>
-                <a href="{{route('tambahKatalog')}}"><button class="btn btn-success">Tambah Data</button></a>
+                <a href="{{route('tambahKatalog')}}"><button class="btn btn-primary">Tambah Data</button></a>
             </div>
         </section>
     </section>

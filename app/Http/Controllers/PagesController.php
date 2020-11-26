@@ -79,12 +79,7 @@ class PagesController extends Controller
         $pertumbuhan_tanaman = DB::table('pertumbuhan_tanaman')->get();
         return view('pencatatan', ['pertumbuhan_tanaman' => $pertumbuhan_tanaman]);
     }
-    public function katalogAdmin()
-    {
-        // dump(Auth::guest());
-        $katalog_tanaman = DB::table('katalog')->get();
-        return view('katalogAdmin', ['katalog_tanaman' => $katalog_tanaman]);
-    }
+    
     
     public function tambahPencatatan()
     {
