@@ -32,6 +32,11 @@ Route::get('/profil', 'C_Profil@index')->name('profil');
 Route::post('/ubahprofil', 'C_Profil@update')->name('updateprofil');
 Route::get('/pemesanan', 'C_Pemesanan@index')->name('pemesanan');
 Route::post('/pemesanan', 'C_Pemesanan@store')->name('pemesanan');
+Route::get('/checkoutPemesanan', 'C_Pemesanan@show')->name('checkoutpemesanan');
+Route::post('/pembayaran', 'C_Pemesanan@update')->name('pembayaran');
+Route::get('/pembayaran', 'C_Pemesanan@edit')->name('pembayaran');
+Route::post('/buktipembayaran', 'C_Pemesanan@pembayaran')->name('buktipembayaran');
+Route::get('/cekpemesanan', 'C_Pemesanan@cekpemesanan')->name('cekpemesanan');
 
 
 //penjual
@@ -48,6 +53,8 @@ Route::get('/tambahPencatatan', 'C_PertumbuhanTanaman@create')->middleware('auth
 Route::post('/tambahTanaman', 'C_PertumbuhanTanaman@store')->middleware('auth:penjual');
 Route::get('/editTanaman', 'C_PertumbuhanTanaman@edit')->middleware('auth:penjual')->name('editTanaman');
 Route::post('/editTanaman', 'C_PertumbuhanTanaman@update')->middleware('auth:penjual')->name('editTanaman');
+Route::get('/pemesananAdmin', 'C_PemesananAdmin@index')->middleware('auth:penjual')->name('pemesananAdmin');
+Route::get('/verifikasi', 'C_PemesananAdmin@update')->middleware('auth:penjual')->name('verifikasi');
 
 
 

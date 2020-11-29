@@ -40,6 +40,7 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  <script src="https://kit.fontawesome.com/6e3c04dd1f.js" crossorigin="anonymous"></script>  
 </head>
 
 <body>
@@ -155,6 +156,12 @@
                       </a>
           </li>
 
+          <li class="sub-menu">
+            <a href="{{route('pemesananAdmin')}}" class="">
+            <i class="far fa-chart-bar"></i>
+              <span>Pemesanan</span>
+            </a>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>

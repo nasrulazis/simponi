@@ -82,10 +82,13 @@ class C_Pemesanan extends Controller
        
        $detailpemesanan=detailpemesanan::where('pesanan_id',$pesanan_id->id)->get();
     //    dd($detailpemesanan);
-       foreach($detailpemesanan as $key => $data){
+       
         $pemesanan=pemesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
-        $pemesanan->total_harga += $data->harga;
-        }
+        // $pemesanan->total_harga = $pemesanan->total_harga+$katalog->harga*$request->jumlah; 
+        $pemesanan->total_harga = 0; 
+        foreach($detailpemesanan as $key=> $data){
+            $pemesanan->total_harga +=$data->harga; 
+        }       
         $pemesanan->update();
        return back();
 
@@ -98,9 +101,9 @@ class C_Pemesanan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('checkout_pemesanan');
     }
 
     /**
@@ -109,9 +112,26 @@ class C_Pemesanan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    public function cekpemesanan(){
+        return view('/cekpemesanan');
+    }
+    public function pembayaran(Request $request){
+        $pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('status',1)->first();
+        if(!empty($pemesanan)){
+            $file=$request->file('image');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $location=public_path('/images');
+            $file->move($location,$filename);
+            $pemesanan->gambar=$filename;                       
+            $pemesanan->status=2;                       
+        }   
+        $pemesanan->save();
+        return back();
+    }
+    public function edit()
     {
-        //
+        return view('/pembayaran');
     }
 
     /**
@@ -121,9 +141,15 @@ class C_Pemesanan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
+       if(!empty($pemesanan)){
+            $pemesanan->status = 1;
+            $pemesanan->alamat = $request->alamat;            
+            $pemesanan->save();
+       }   
+       return view('/pembayaran');
     }
 
     /**

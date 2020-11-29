@@ -18,6 +18,8 @@ class CreatePemesananTable extends Migration
             $table->integer('user_id');
             $table->date('tanggal');
             $table->integer('total_harga');
+            $table->string('alamat')->nullable();
+            $table->string('gambar')->nullable();
             $table->string('status');
             $table->timestamps();
         });
