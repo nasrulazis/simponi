@@ -12,7 +12,7 @@
   <title>@yield('title')</title>
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- bootstrap theme -->
   <link href="css/bootstrap-theme.css" rel="stylesheet">
   <!--external css-->
@@ -34,12 +34,6 @@
   <link href="css/style-responsive.css" rel="stylesheet" />
   <link href="css/xcharts.min.css" rel=" stylesheet">
   <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: NiceAdmin
-    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
   <script src="https://kit.fontawesome.com/6e3c04dd1f.js" crossorigin="anonymous"></script>  
 </head>
 
@@ -109,7 +103,7 @@
                                 <img alt="" src="img/avatar1_small.jpg">
                             </span> -->
                             <span class="username">{{ Auth::user()->nama }}</span>
-                            <b class="caret"></b>
+                            <!-- <b class="caret"></b> -->
                         </a>
             <ul class="dropdown-menu extended logout">
               <div class=""></div>
@@ -162,6 +156,13 @@
               <span>Pemesanan</span>
             </a>
           </li>
+          
+          <li class="sub-menu">
+            <a href="{{route('chatAdmin')}}" class="">
+            <i class="fas fa-comment"></i>
+              <span>Chat</span>
+            </a>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -182,7 +183,9 @@
   <script src="js/jquery-1.8.3.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
   <!-- bootstrap -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- nice scroll -->
   <script src="js/jquery.scrollTo.min.js"></script>
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>

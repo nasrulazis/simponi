@@ -24,6 +24,7 @@ Route::get('/keluar', 'LoginController@keluar');
 Route::post('/register', 'LoginController@postRegister')->name('register');
 Route::get('/register', 'LoginController@getRegister');
 Route::get('/reset', 'PagesController@reset')->name('reset');
+Route::post('/chat', 'C_Chat@store')->name('chat');
 
 //pembeli
 Route::get('/pembeli', 'PagesController@pembeli')->name('pembeli')->middleware('auth:pembeli');
@@ -55,6 +56,8 @@ Route::get('/editTanaman', 'C_PertumbuhanTanaman@edit')->middleware('auth:penjua
 Route::post('/editTanaman', 'C_PertumbuhanTanaman@update')->middleware('auth:penjual')->name('editTanaman');
 Route::get('/pemesananAdmin', 'C_PemesananAdmin@index')->middleware('auth:penjual')->name('pemesananAdmin');
 Route::get('/verifikasi', 'C_PemesananAdmin@update')->middleware('auth:penjual')->name('verifikasi');
+Route::get('/chat', 'C_ChatAdmin@index')->middleware('auth:penjual')->name('chatAdmin');
+Route::post('/tambahChat', 'C_ChatAdmin@store')->middleware('auth:penjual')->name('tambahChat');
 
 
 

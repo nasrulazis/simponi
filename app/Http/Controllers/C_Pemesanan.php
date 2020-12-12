@@ -146,7 +146,7 @@ class C_Pemesanan extends Controller
         $pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
        if(!empty($pemesanan)){
             $pemesanan->status = 1;
-            $pemesanan->alamat = $request->alamat;            
+            $pemesanan->alamat = $request->kecamatan.' '.$request->alamat;            
             $pemesanan->save();
        }   
        return view('/pembayaran');

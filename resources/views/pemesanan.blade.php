@@ -26,10 +26,7 @@
                       </td>
                     </tr>
 
-                    <tr class="d-flex">
-                      <td class="col-2 d-flex align-items-center"><p class="text-muted mb-0">Jumlah</p></td>
-                      <td class="col-10">1</td>
-                    </tr>
+                    
 
                     <tr class="d-flex">
                       <td class="col-2 d-flex align-items-center"><p class="text-muted">Info Produk</p></td>

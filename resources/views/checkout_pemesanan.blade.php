@@ -48,6 +48,23 @@
                 <input type="text" value="{{Auth::user()->nama}}" name="nama" class="form-control" placeholder="Nama" >
                 <label for="" class="pt-2">Alamat</label>
                 <textarea name="alamat" id="" rows="3" class="form-control" name="alamat" placeholder="Alamat" style=" resize: none;"></textarea>                                
+                <label for="" class="pt-2">Kecamatan</label>
+                <div class="input-group mb-3">
+                  <!-- <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                  </div> -->
+                  <select class="custom-select" name="kecamatan" id="inputGroupSelect01">
+                    <option selected disabled>Pilih Kecamatan</option>
+                    <option value="Panji">Panji</option>
+                    <option value="Situbondo">Situbondo</option>
+                    <option value="Mangaran">Mangaran</option>
+                    <option value="Kapongan">Kapongan</option>
+                    <option value="Panarukan">Panarukan</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <small class="text-center">Kecamatan anda tidak ditemukan?  Mohon maaf jika kecamatan anda belum tercakup</small>
+                </div>
                 <hr>
                 <div class="d-flex justify-content-between w-100 mb-4"><div>Total Harga</div> Rp{{number_format(floatval($total_pemesanan))}}</div>
                 <input type="submit" value="Beli({{$jumlahpemesanan}})" class="btn btn-success w-100">

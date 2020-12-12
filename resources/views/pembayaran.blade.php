@@ -99,7 +99,8 @@
                 <div class="tab-content" id="nav-tabContent">
                   <div class="tab-pane fade show active text-center" id="list-home" role="tabpanel" aria-labelledby="list-home-list">a/n SIMPONI<h3>5046772</h3></div>
                   <div class="tab-pane fade text-center" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">a/n SIMPONI<h3>563101017240538</h3></div>
-                  <div class="tab-pane fade text-center" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">a/n SIMPONI<h3>1392307588</h3></div>                  <div class="tab-pane fade text-center" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">a/n SIMPONI<h3>1300010553256</h3></div>
+                  <div class="tab-pane fade text-center" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">a/n SIMPONI<h3>1392307588</h3></div>                  
+                  <div class="tab-pane fade text-center" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">a/n SIMPONI<h3>1300010553256</h3></div>
                 </div>
               </div>
               <p class="text-center">Pastikan pembayaran tertuju kepada no rekening atas nama <b>SIMPONI</b></p>

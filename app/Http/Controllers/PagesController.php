@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\katalog;
+use App\chat;
 use App\pertumbuhan_tanaman;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class PagesController extends Controller
         // dump(Auth::guest());
         // dump(Auth::guard('penjual'));
         $katalog = DB::table('katalog')->get();
-        return view('index', ['katalog' => $katalog]);
+        $chat=chat::where('id_pembeli',0)->get();
+        return view('index', compact('katalog','chat'));
     }
     public function login()
     {
@@ -54,7 +56,8 @@ class PagesController extends Controller
         // dump(Auth::guard('penjual'));
         // dump(Auth::guard('pembeli'));
         $katalog = DB::table('katalog')->get();
-        return view('index', ['katalog' => $katalog]);
+        $chat=chat::where('id_pembeli',Auth::user()->id)->get();
+        return view('index', compact('katalog','chat'));
     }
     public function katalogPembeli()
     {
