@@ -48,7 +48,7 @@ Route::get('/editkatalogAdmin', 'KatalogTanaman@edit')->middleware('auth:penjual
 Route::post('/editkatalogAdmin', 'KatalogTanaman@update')->middleware('auth:penjual')->name('editkatalog');
 Route::get('/katalogAdmin', 'KatalogTanaman@katalogAdmin')->middleware('auth:penjual')->name('katalogadmin');
 Route::get('/tambahkatalogAdmin', 'KatalogTanaman@tambahkatalogAdmin')->middleware('auth:penjual')->name('tambahKatalog');
-Route::get('/tambahKatalog', 'KatalogTanaman@tambahKatalog')->middleware('auth:penjual');
+Route::post('/tambahKatalog', 'KatalogTanaman@tambahKatalog')->middleware('auth:penjual');
 Route::get('/hapusKatalog', 'KatalogTanaman@hapusKatalog')->middleware('auth:penjual');
 Route::get('/hapusTanaman', 'PertumbuhanTanaman@destroy')->middleware('auth:penjual');
 Route::get('/tambahPencatatan', 'PertumbuhanTanaman@create')->middleware('auth:penjual')->name('tambahPencatatan');

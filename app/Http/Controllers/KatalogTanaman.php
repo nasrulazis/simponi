@@ -30,9 +30,9 @@ class KatalogTanaman extends Controller
     public function tambahKatalog(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'namatanaman' => 'required|min:4',
+            'namatanaman' => 'required',
             'stok' => 'required',
-            'harga' => 'required|min:3',
+            'harga' => 'required',
             'gambar' => 'image|mimes:jpeg,jpg,png'
             ]);
         if ($validator->fails()) {
@@ -79,8 +79,8 @@ class KatalogTanaman extends Controller
         $katalog->nama_tanaman = $request->namatanaman;
         $katalog->stok = $request->stok;
         $katalog->harga = $request->harga;
-        $file=$request->file('gambar');
-        if(!empty($request->file('gambar'))){
+        $file=$request->file('image');
+        if(!empty($request->file('image'))){
             $filename=time().'.'.$file->getClientOriginalExtension();
             $location=public_path('/images');
             $file->move($location,$filename);

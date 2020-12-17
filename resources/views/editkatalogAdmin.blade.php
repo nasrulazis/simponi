@@ -53,7 +53,7 @@
                                             <div class="form-group ">
                                             <label for="curl" class="control-label col-lg-2">Gambar<span class="required">*</span></label>
                                             <div class="col-lg-10">
-                                                <input class="form-control "  type="file" name="gambar" />
+                                                <input class="form-control "  type="file" name="image" />
                                             </div>
                                             </div>
                                             <div class="form-group">
