@@ -30,7 +30,7 @@
                                     <div class="panel-body">
                                         <div class="form">
                                         @foreach($katalog_tanaman as $key =>$data)
-                                        <form class="form-validate form-horizontal" id="feedback_form" method="post" action="{{route('editkatalog')}}?id={{$data->id}}">
+                                        <form class="form-validate form-horizontal" id="feedback_form" method="post" action="{{route('editkatalog')}}?id={{$data->id}}" enctype="multipart/form-data">
                                         @csrf
                                             <div class="form-group ">
                                             <label for="cname" class="control-label col-lg-2">Nama Tanaman <span class="required">*</span></label>
@@ -48,6 +48,12 @@
                                             <label for="curl" class="control-label col-lg-2">Harga<span class="required">*</span></label>
                                             <div class="col-lg-10">
                                                 <input class="form-control "  type="text" name="harga" value="{{$data->harga}}"/>
+                                            </div>
+                                            </div>
+                                            <div class="form-group ">
+                                            <label for="curl" class="control-label col-lg-2">Gambar<span class="required">*</span></label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control "  type="file" name="gambar" />
                                             </div>
                                             </div>
                                             <div class="form-group">

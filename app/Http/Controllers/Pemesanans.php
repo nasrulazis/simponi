@@ -8,8 +8,9 @@ use App\pemesanan;
 use App\detailpemesanan;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
-class C_Pemesanan extends Controller
+class Pemesanans extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,10 +45,18 @@ class C_Pemesanan extends Controller
      */
     public function store(Request $request)
     {
-       $id=$_GET['id'];
-       $tanggal= Carbon::now();
-    
-       $katalog = katalog::where('id',$id)->first();
+        $id=$_GET['id'];
+        $tanggal= date('Y-m-d');
+        $katalog = katalog::where('id',$id)->first();
+        $stok=$katalog->stok;
+        $validator = Validator::make($request->all(), [
+            'jumlah' => 'required|numeric|between:1,'.$stok,
+            ]);
+            // dd($validator->errors()->all());
+            if ($validator->fails()) {
+                alert()->error('gagal',$validator->errors()->all());
+                return back();
+            }
     
     // simpan ke pemesanan
        $cek_pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
@@ -90,6 +99,7 @@ class C_Pemesanan extends Controller
             $pemesanan->total_harga +=$data->harga; 
         }       
         $pemesanan->update();
+        alert()->success('Berhasil','menambahkan produk ke keranjang');
        return back();
 
 
@@ -116,8 +126,33 @@ class C_Pemesanan extends Controller
     public function cekpemesanan(){
         return view('/cekpemesanan');
     }
+    
+    public function selesaikanpemesanan(){
+        $id=$_GET['id'];
+        $pemesanan = pemesanan::where('id',$id)->where('status',3)->first();
+        if(empty($pemesanan)){
+            alert()->error('Gagal','pesanan belum selesai');
+        return back();
+        }else{
+
+            $pemesanan->status=4;
+            $pemesanan->save();
+            
+            alert()->success('Berhasil','pesanan selesai');
+            return back();
+        }
+    }
+
     public function pembayaran(Request $request){
-        $pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('status',1)->first();
+        $validator = Validator::make($request->all(), [
+            'image' => 'image|mimes:jpeg,jpg,png',
+            ]);
+        if ($validator->fails()) {
+            alert()->error('','File harus dalam format JPG,JPEG atau PNG');
+            return back();
+        }
+        $id=$_GET['id'];
+        $pemesanan = pemesanan::where('user_id',Auth::user()->id)->where('id',$id)->where('status',1)->first();
         if(!empty($pemesanan)){
             $file=$request->file('image');
             $filename=time().'.'.$file->getClientOriginalExtension();
@@ -127,8 +162,10 @@ class C_Pemesanan extends Controller
             $pemesanan->status=2;                       
         }   
         $pemesanan->save();
-        return back();
+        alert()->success('Berhasil','menambahkan bukti pembayaran');
+        return redirect()->route('cekpemesanan');
     }
+
     public function edit()
     {
         return view('/pembayaran');
@@ -148,7 +185,8 @@ class C_Pemesanan extends Controller
             $pemesanan->status = 1;
             $pemesanan->alamat = $request->kecamatan.' '.$request->alamat;            
             $pemesanan->save();
-       }   
+       }
+       alert()->success('Berhasil Checkout','Silahkan melakukan pembayaran!');
        return view('/pembayaran');
     }
 

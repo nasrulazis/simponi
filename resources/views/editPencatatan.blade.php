@@ -31,7 +31,7 @@
                                     <div class="panel-body">
                                         <div class="form">
                                         @foreach($tanaman as $key =>$data)
-                                            <form class="form-validate form-horizontal" id="feedback_form" method="post" action="{{route('editTanaman')}}?id={{$data->id}}">
+                                            <form class="form-validate form-horizontal" id="feedback_form" method="post" action="{{route('editTanaman')}}?id={{$data->id}}" enctype="multipart/form-data">
                                             @csrf
                                                 <div class="form-group ">
                                                     <label for="cname" class="control-label col-lg-2">Tanggal Penanaman <span class="required">*</span></label>
@@ -55,6 +55,18 @@
                                                     <label for="curl" class="control-label col-lg-2">Nutrisi<span class="required">*</span></label>
                                                     <div class="col-lg-10">
                                                         <input class="form-control "  type="text" name="nutrisi" value="{{$data->nutrisi}}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="curl" class="control-label col-lg-2">Keterangan<span class="required">*</span></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control "  type="text" name="keterangan" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="curl" class="control-label col-lg-2">Gambar<span class="required">*</span></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control "  type="file" name="gambar" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

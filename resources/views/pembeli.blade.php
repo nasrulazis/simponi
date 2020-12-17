@@ -1,7 +1,7 @@
 @extends('layout/main')
 @section('title','Simponi')
 @section('navbar')
-    <h1 class="logo mr-auto"><a href="/pembeli" class="text-success">Simponi</a></h1>
+    <h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>          
           <li class="dropdown">

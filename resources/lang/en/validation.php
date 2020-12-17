@@ -128,7 +128,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'jumlah' => [
+            'required' => 'Jumlah pesanan tidak boleh kosong',
+            'between' => 'Jumlah pesanan minimal adalah :min kg dan maksimal :max kg.',
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

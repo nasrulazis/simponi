@@ -42,80 +42,25 @@
   <section id="container" class="">
 
 
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+    <header class="header dark-bg align-items-center d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="toggle-nav m-0">
+        <div class="icon-reorder tooltips" data-placement="bottom"><i class="icon_menu"></i></div>
       </div>
 
       <!--logo start-->
-      <a href="/admin" class="logo">Simponi</a>
+      <a href="/admin" class="logo m-0">Simponi</a>
       <!--logo end-->
-
-      <div class="nav search-row" id="top_menu">        
-        <!--  search form start -->
-        <ul class="nav top-menu">
-          <li>
-            <form class="navbar-form">
-              <input class="form-control" placeholder="Search" type="text">
-            </form>
-          </li>
-        </ul>
-        <!--  search form end -->
-      </div>
-      <div class="top-nav notification-row">
+    </div>
+      <div class="top-nav notification-row d-flex align-items-center">
         <!-- notificatoin dropdown start-->
         <ul class="nav pull-right top-menu">
-
-          
-          <!-- inbox notificatoin start-->
-          <!-- <li id="mail_notificatoin_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">0</span>
-                        </a>
-            <ul class="dropdown-menu extended inbox">
-              <div class="notify-arrow notify-arrow-blue"></div>
-              <li>
-                <p class="blue">You have 5 new messages</p>
-              </li>
-              <li>
-                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Greg  Martin</span>
-                                    <span class="time">1 min</span>
-                                    </span>
-                                    <span class="message">
-                                        I really like this admin panel.
-                                    </span>
-                                </a>
-              </li>
-              <li>
-                <a href="#">See all messages</a>
-              </li>
-            </ul>
-          </li> -->
-          <!-- inbox notificatoin end -->          
-          <!-- user login dropdown start-->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <!-- <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span> -->
-                            <span class="username">{{ Auth::user()->nama }}</span>
-                            <!-- <b class="caret"></b> -->
-                        </a>
-            <ul class="dropdown-menu extended logout">
-              <div class=""></div>
-              <li>
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
-              </li>
-              <li>
-                <a href="/keluar"><i class="icon_clock_alt"></i> Logout</a>
-              </li>
-              
-              
-            </ul>
+          <li class="dropdown ">
+                <!-- <span class="profile-ava"> -->
+                    <!-- <img alt="" src="img/avatar1_small.jpg"> -->
+                <!-- </span> -->
+                <span class="username d-flex align-items-center">{{ Auth::user()->nama }}</span>
+                <!-- <b class="caret"></b> -->
           </li>
           <!-- user login dropdown end -->
         </ul>
@@ -163,6 +108,9 @@
               <span>Chat</span>
             </a>
           </li>
+          <li class="sub-menu">
+                <a href="/keluar"><i class="icon_clock_alt"></i> Logout</a>
+              </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -172,7 +120,7 @@
     <!--main content start-->
     
     @yield('container')
-        
+    @include('sweetalert::alert')
     <!--main content end-->
   </section>
   <!-- container section start -->
@@ -265,7 +213,7 @@
         });
       });
     </script>
-
+  
 </body>
 
 </html>

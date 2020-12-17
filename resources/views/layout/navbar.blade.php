@@ -2,11 +2,11 @@
 <header id="header" class="relative-top">
     <div class="container d-flex align-items-center">
 
-    <h1 class="logo mr-auto"><a href="/pembeli" class="text-success">Simponi</a></h1>
+    <h1 class="logo mr-auto"><a href="/" class="text-success">Simponi</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>          
           @guest
-          <li><a href="{{route('halamanLogin')}}" class="btn btn-outline-success rounded-pill px-4 text-success scrollto">Login</a></li>
+          <li><a href="{{route('login')}}" method="get" class="btn btn-outline-success rounded-pill px-4 text-success scrollto">Login</a></li>
           <li><a href="{{route('halamanDaftar')}}" class="btn btn-success rounded-pill px-4 text-white scrollto">Daftar</a></li>
           
           @else

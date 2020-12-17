@@ -24,8 +24,13 @@ class PagesController extends Controller
         // dump(Auth::guest());
         // dump(Auth::guard('penjual'));
         $katalog = DB::table('katalog')->get();
-        $chat=chat::where('id_pembeli',0)->get();
-        return view('index', compact('katalog','chat'));
+        if(Auth::check()){
+            $chat=chat::where('id_pembeli',Auth::user()->id)->get();
+            return view('index', compact('katalog','chat'));
+        }else{
+            $chat=chat::where('id_pembeli',0)->get();
+            return view('index', compact('katalog','chat'));
+        }
     }
     public function login()
     {
@@ -33,11 +38,7 @@ class PagesController extends Controller
         // dump(Auth::guard('penjual'));
         return view('login');
     }
-    public function katalog()
-    {
-        $katalog= katalog::where('id', $_GET['id'])->get();
-        return view('katalog', ['katalog' => $katalog]);
-    }
+    
     public function daftar()
     {
         // dump(Auth::guest());

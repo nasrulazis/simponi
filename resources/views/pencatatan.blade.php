@@ -16,7 +16,7 @@
         
             <!-- page start-->
             <div class="row">
-            <div class="col-sm-8">
+            <div class="col-lg-10">
                 <section class="panel">
                 <header class="panel-heading">
                     Pencatatan Hidroponik
@@ -29,6 +29,8 @@
                         <th>Jenis Tumbuhan yang ditanam</th>
                         <th>Suhu Ruangan</th>
                         <th>Pupuk</th>
+                        <th>Keterangan</th>
+                        <th>Gambar</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -40,6 +42,8 @@
                         <td>{{$pertumbuhan->jenis_tanaman}}</td>
                         <td>{{$pertumbuhan->suhu_ruangan}}</td>
                         <td>{{$pertumbuhan->nutrisi}}</td>
+                        <td>{{$pertumbuhan->keterangan}}</td>
+                        <td><div class="col-xl-4"><img src="images/{{$pertumbuhan->gambar}}" style="width:100%" alt=""></div></td>
                         <td class="text-right"><a href="{{route('editTanaman')}}?id={{$pertumbuhan->id}}"><button class="btn btn-warning">Ubah</button></a> <a href="hapusTanaman?id={{$pertumbuhan->id}}"><button class="btn btn-danger">Hapus</button></a></td>
                     </tr>
                     @endforeach

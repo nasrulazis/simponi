@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\pembeli;
 use App\chat;
-use Auth;
 
-class C_Chat extends Controller
+class ChatAdmin extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth:pembeli');
-    }
     public function index()
     {
-        //
+        $pembeli=pembeli::all();
+        $chat=chat::all();
+        return view('chatAdmin',compact('pembeli','chat'));
     }
 
     /**
@@ -40,17 +38,15 @@ class C_Chat extends Controller
      */
     public function store(Request $request)
     {
+        $id=$_GET['id'];
         $chat=New chat;
         $chat->tulis_pesan=$request->chat;
-        $chat->id_pembeli=Auth::user()->id;
+        $chat->id_pembeli=$id;
         $chat->id_penjual=1;
-        $chat->id_penjual=1;
-        $chat->status=1;
+        $chat->status=2;
         $chat->save();
 
         return back();
-        
-
     }
 
     /**

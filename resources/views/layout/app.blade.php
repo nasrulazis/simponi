@@ -11,7 +11,7 @@
           <nav class="nav-menu d-none d-lg-block">
             <ul>          
               @guest
-              <li><a href="{{route('halamanLogin')}}" class="btn btn-outline-success rounded-pill px-4 text-success scrollto">Login</a></li>
+              <li><a href="{{route('login')}}" class="btn btn-outline-success rounded-pill px-4 text-success scrollto">Login</a></li>
               <li><a href="{{route('halamanDaftar')}}" class="btn btn-success rounded-pill px-4 text-white scrollto">Daftar</a></li>
               
               @else
@@ -47,5 +47,6 @@
             @yield('content')
         </main>
   </div>
+  @include('sweetalert::alert')
 </body>
 </html>

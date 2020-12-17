@@ -8,7 +8,12 @@
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 justify-content-center mb-4">
               <div class="icon-box" style="width:100%">
                 <div class="image shadow">
-                  <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
+                @if(!empty($katalog_tumbuhan->gambar))
+
+                <img src="images/{{$katalog_tumbuhan->gambar}}" alt="">
+                @else
+                <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
+                @endif
                 </div>
               </div>
             </div>
@@ -33,7 +38,7 @@
                       <td class="col-10 d-flex align-items-center">
                       <div class="">
                       <p class="text-muted m-0">Stok</p>
-                      <h4>Tersedia</h4>
+                      <h4>{{$katalog_tumbuhan->stok}} KG</h4>
                       </div>
                       </td>
                     </tr>

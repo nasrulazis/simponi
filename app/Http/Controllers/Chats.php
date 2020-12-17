@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pemesanan;
+use App\chat;
+use Auth;
 
-class C_PemesananAdmin extends Controller
+class Chats extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:pembeli');
+    }
     public function index()
     {
-        $pemesanan = pemesanan::all();
-        return view('pemesananAdmin',['pemesanan' => $pemesanan]);
+        //
     }
 
     /**
@@ -36,7 +40,20 @@ class C_PemesananAdmin extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!empty($request->chat)){
+
+            $chat=New chat;
+            $chat->tulis_pesan=$request->chat;
+            $chat->id_pembeli=Auth::user()->id;
+            $chat->id_penjual=1;
+            $chat->id_penjual=1;
+            $chat->status=1;
+            $chat->save();
+            
+        }
+        return back();
+        
+
     }
 
     /**
@@ -68,14 +85,9 @@ class C_PemesananAdmin extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id=$_GET['id'];
-        $pemesanan = pemesanan::where('user_id',$id)->where('status',2)->first();
-        $pemesanan->status=3;
-        $pemesanan->save();
-
-        return back();
+        //
     }
 
     /**

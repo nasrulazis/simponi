@@ -19,16 +19,16 @@
         <div class="row">
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 justify-content-center mb-4">
         
-              <div class="icon-box" id="profil" style="width:100%">
+              <!-- <div class="icon-box" id="profil" style="width:100%">
                 <div class="image">
                   <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
                 </div>
                 <a href=""><div class="btn btn-outline-success p-2 mx-4 mt-4 d-flex justify-content-center"> Ubah Foto</div></a>
                 <div class="px-4 d-flex justify-content-left text-muted"><small> * Ukuran maximal foto adalah 5mb. <br> Extensi file yang diperbolehkan JPG, JPEG, PNG</small></div>
                 
-              </div>
+              </div> -->
             </div>
-            <div class="description col-lg-6 my-4">
+            <div class="description col-lg-8 my-4">
               <h4>Biodata Diri</h4>
               <div class="table-responsive">
               <table class="table table-borderless" id="tabelprofil">

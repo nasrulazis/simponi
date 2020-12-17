@@ -93,7 +93,12 @@
             <a href="/katalog?id={{$katalog_tumbuhan->id}}">
               <div class="icon-box" style="width:100%">
                 <div class="image">
+                  @if(!empty($katalog_tumbuhan->gambar))
+
+                  <img src="images/{{$katalog_tumbuhan->gambar}}" alt="">
+                  @else
                   <img src="assets/img/2864437_86b5f81d-5474-49d4-8241-8954021af099_706_706.png" alt="">
+                  @endif
                 </div>
                 <div class="deskripsi">
                 <h4>{{$katalog_tumbuhan->nama_tanaman}}</h4>

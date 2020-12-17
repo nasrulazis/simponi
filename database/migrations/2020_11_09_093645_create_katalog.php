@@ -18,7 +18,7 @@ class CreateKatalog extends Migration
             $table->string('nama_tanaman',20);
             $table->integer('stok');
             $table->integer('harga');
-            $table->binary('gambar')->nullable();
+            $table->string('gambar')->nullable();
             $table->integer('id_penjual');        
             $table->timestamps();
         });

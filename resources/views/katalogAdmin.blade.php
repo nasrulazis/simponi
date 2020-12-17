@@ -39,7 +39,7 @@
                         <td>{{$katalog->nama_tanaman}}</td>
                         <td>{{$katalog->stok}}</td>
                         <td>{{$katalog->harga}}</td>
-                        <td>{{$katalog->gambar}}</td>
+                        <td><div class="col-md-4"><img src="images/{{$katalog->gambar}}" style="width:100%" alt=""></div></td>
                         <td class="text-right"><a href="{{route('editkatalog')}}?id={{$katalog->id}}"><button class="btn btn-warning">Ubah</button></a> <a href="hapusKatalog?id={{$katalog->id}}"><button class="btn btn-danger">Hapus</button></td></a>
                     </tr>
                     @endforeach

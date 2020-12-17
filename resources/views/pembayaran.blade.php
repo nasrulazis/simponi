@@ -33,10 +33,11 @@
               $total_pemesanan=$data->total_harga;    
               $detail=\App\detailpemesanan::where('pesanan_id',$data->id)->get();                            
               $jumlahpemesanan=count($detail);
+              $tanggal=date_create($data->tanggal);
               ?>
               <div class="d-flex w-100 align-items-center">
                 <div>
-                  <div class="h4 font-weight-bold ">Pemesanan {{$data->id}} {{$data->tanggal}}</div>                  
+                  <div class="h4 font-weight-bold ">Pemesanan {{$data->id}}{{date_format($tanggal,"Ymd")}}</div>                  
                 </div>
                 <div class="flex-row m-2 w-100 ">
                 @foreach($detail as $key => $datadetail)
@@ -61,7 +62,7 @@
                 Total : Rp{{number_format(floatval($total_pemesanan))}}
                 <hr>
                 @if(empty($data->gambar))
-                <form action="{{route('buktipembayaran')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('buktipembayaran')}}?id={{$data->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                   <label for="upload-photo" class="btn btn-outline-success h-50">Upload Bukti Pembayaran</label>
                   <input type="file" id="upload-photo" class="d-none" name="image" onchange="form.submit()">

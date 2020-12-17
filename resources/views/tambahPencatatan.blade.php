@@ -30,18 +30,18 @@
                                     <div class="panel-body">
                                         <div class="form">
                                         
-                                            <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/tambahTanaman">
+                                            <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/tambahTanaman" enctype="multipart/form-data">
                                             @csrf
                                                 <div class="form-group ">
                                                     <label for="cname" class="control-label col-lg-2">Tanggal Penanaman <span class="required">*</span></label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control"  name="tanggal_penanaman" minlength="5" type="date" required />
+                                                        <input class="form-control"  name="tanggal_penanaman" minlength="5" type="date" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="cemail" class="control-label col-lg-2">Jenis Tanaman <span class="required">*</span></label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control "  type="text" name="jenis_tanaman" required />
+                                                        <input class="form-control "  type="text" name="jenis_tanaman" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
@@ -54,6 +54,18 @@
                                                     <label for="curl" class="control-label col-lg-2">Nutrisi<span class="required">*</span></label>
                                                     <div class="col-lg-10">
                                                         <input class="form-control "  type="text" name="nutrisi" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="curl" class="control-label col-lg-2">Keterangan<span class="required">*</span></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control "  type="text" name="keterangan" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="curl" class="control-label col-lg-2">Gambar<span class="required">*</span></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control "  type="file" name="gambar" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

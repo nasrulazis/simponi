@@ -19,7 +19,9 @@ class CreatePertumbuhanTanamanTable extends Migration
             $table->integer('suhu_ruangan');
             $table->string('nutrisi',20);
             $table->string('jenis_tanaman',20);
-            $table->integer('id_penjual');            
+            $table->string('keterangan');
+            $table->string('gambar');
+            $table->integer('id_penjual'); 
             $table->timestamps();
         });
     }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\pertumbuhan_tanaman;
-class C_PertumbuhanTanaman extends Controller
+use Illuminate\Support\Facades\Validator;
+
+class PertumbuhanTanaman extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,19 +41,31 @@ class C_PertumbuhanTanaman extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $validator = Validator::make($request->all(), [
             'tanggal_penanaman' => 'required',
             'suhu_ruangan' => 'required',
             'nutrisi' => 'required',
-            'jenis_tanaman' => 'required'
-        ]);
-        pertumbuhan_tanaman::create([
-            'tanggal_penanaman' => $request->tanggal_penanaman,
-            'suhu_ruangan' => $request->suhu_ruangan,
-            'nutrisi' => $request->nutrisi,
-            'jenis_tanaman' => $request->jenis_tanaman,
-            'id_penjual' => 1
-        ]);
+            'jenis_tanaman' => 'required',
+            'gambar' => 'image|mimes:jpeg,jpg,png'
+            ]);
+        if ($validator->fails()) {
+            alert()->error('','Form data pertumbuhan tanaman tidak boleh kosong');
+            return back();
+        }
+        $tanaman = New pertumbuhan_tanaman;
+        $tanaman->tanggal_penanaman = $request->tanggal_penanaman;
+        $tanaman->suhu_ruangan = $request->suhu_ruangan;
+        $tanaman->nutrisi = $request->nutrisi;
+        $tanaman->jenis_tanaman = $request->jenis_tanaman;
+        $tanaman->id_penjual = 1;
+        $tanaman->keterangan = $request->keterangan;
+        $file=$request->file('gambar');
+        $filename=time().'.'.$file->getClientOriginalExtension();
+        $location=public_path('/images');
+        $file->move($location,$filename);
+        $tanaman->gambar=$filename;
+        $tanaman->save();
+        alert()->success('','Data Pertumbuhan Tanaman berhasil ditambahkan');
         return redirect('/pencatatan');
     }
 
@@ -89,21 +103,34 @@ class C_PertumbuhanTanaman extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request,[
+        $validator = Validator::make($request->all(), [
             'tanggal_penanaman' => 'required',
             'suhu_ruangan' => 'required',
             'nutrisi' => 'required',
-            'jenis_tanaman' => 'required'
-        ]);
+            'jenis_tanaman' => 'required',
+            'gambar' => 'image|mimes:jpeg,jpg,png'
+            ]);
+        if ($validator->fails()) {
+            alert()->error('','Form data pertumbuhan tanaman tidak boleh kosong');
+            return back();
+        }
         $id = $_GET['id'];
         $tanaman=pertumbuhan_tanaman::find($id);
         $tanaman->tanggal_penanaman = $request->tanggal_penanaman;
         $tanaman->suhu_ruangan = $request->suhu_ruangan;
         $tanaman->nutrisi = $request->nutrisi;
         $tanaman->jenis_tanaman = $request->jenis_tanaman;
+        $tanaman->keterangan = $request->keterangan;
+        $file=$request->file('gambar');
+        if(!empty($request->file('gambar'))){
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $location=public_path('/images');
+            $file->move($location,$filename);
+            $tanaman->gambar=$filename;
+        }
         $tanaman->id_penjual = 1;
         $tanaman->save();
-
+        alert()->success('','Data pertumbuhan tanaman berhasil disimpan');
         return redirect('/pencatatan');
     }
 
@@ -118,6 +145,7 @@ class C_PertumbuhanTanaman extends Controller
         $id = $_GET['id'];
         $tanaman=pertumbuhan_tanaman::find($id);
         $tanaman->delete();
+        alert()->success('','Data Pertumbuhan Tanaman berhasil dihapus');
         return back();
     }
 }

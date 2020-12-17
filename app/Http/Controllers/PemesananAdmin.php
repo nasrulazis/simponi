@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pembeli;
-use App\chat;
+use App\pemesanan;
+use Illuminate\Support\Facades\Validator;
 
-class C_ChatAdmin extends Controller
+class PemesananAdmin extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class C_ChatAdmin extends Controller
      */
     public function index()
     {
-        $pembeli=pembeli::all();
-        $chat=chat::all();
-        return view('chatAdmin',compact('pembeli','chat'));
+        $pemesanan = pemesanan::orderBy('updated_at', 'desc')->get();
+        return view('pemesananAdmin',['pemesanan' => $pemesanan]);
     }
 
     /**
@@ -38,15 +37,7 @@ class C_ChatAdmin extends Controller
      */
     public function store(Request $request)
     {
-        $id=$_GET['id'];
-        $chat=New chat;
-        $chat->tulis_pesan=$request->chat;
-        $chat->id_pembeli=$id;
-        $chat->id_penjual=1;
-        $chat->status=2;
-        $chat->save();
-
-        return back();
+        //
     }
 
     /**
@@ -78,9 +69,15 @@ class C_ChatAdmin extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id=$_GET['id'];
+        $pemesanan = pemesanan::where('id',$id)->where('status',2)->first();
+        $pemesanan->status=3;
+        $pemesanan->save();
+
+        alert()->success('Berhasil','verifikasi pembayaran');
+        return back();
     }
 
     /**

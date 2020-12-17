@@ -9,6 +9,8 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
@@ -16,10 +18,20 @@ class LoginController extends Controller
 
 
     function login(Request $kiriman){
-        $this->validate($kiriman,[
-            'username' => 'required|min:4',
-            'password' => 'required|min:6'
-        ]);
+        $validator = Validator::make($kiriman->all(), [
+            'username' => 'required',
+            'password' => 'required'
+            ]);
+        // $this->validate($kiriman,[
+        //     'username' => 'required|min:4',
+        //     'password' => 'required|min:6'
+        // ]);
+        // $validator->errors()->add('username', 'Username/Password Salah');
+        // dd($validator->errors()->get('username'));
+        if ($validator->fails()) {
+            alert()->error('','Username dan password harap diisi');
+            return back();
+        }
         $data1= pembeli::where('username', $kiriman->username)->get();
         $data2= penjual::where('username', $kiriman->username)->get();
         $password1=$data1->makeVisible('password')->toArray();
@@ -32,8 +44,10 @@ class LoginController extends Controller
                 Auth::guard('pembeli')->LoginUsingId($data1[0]['id']);
                 return redirect()->route('pembeli');
             } else {
-                echo "<script type='text/javascript'>alert('username/password salah');</script>";
-                return redirect()->route('halamanLogin');
+                alert()->error('','Maaf,
+            username dan password anda tidak
+            sesuai. Harap periksa kembali');
+                return redirect()->route('login');
                 
             }
             
@@ -44,14 +58,16 @@ class LoginController extends Controller
                 Auth::guard('penjual')->LoginUsingId($data2[0]['id']);
             return redirect()->route('admin');
             } else {
-                echo "<script type='text/javascript'>alert('username/password salah penjual');</script>";
-                
+                alert()->error('','Maaf,
+            username dan password anda tidak
+            sesuai. Harap periksa kembali');
+            return redirect()->route('login');  
             }
             
         }else {
-            # code...
-           
-            echo "<script type='text/javascript'>alert('username/password salah');</script>";
+            alert()->error('','Maaf,
+            username dan password anda tidak
+            sesuai. Harap periksa kembali');
             return redirect()->route('login');
         }
     }
@@ -60,14 +76,14 @@ class LoginController extends Controller
         if (Auth::guard('pembeli')->check()) {
             # code...
             Auth::guard('pembeli')->logout();
-            return redirect()->route('halamanLogin');
+            return redirect()->route('login');
         }elseif (Auth::guard('penjual')->check()) {
             # code...
             Auth::guard('penjual')->logout();
-            return redirect()->route('halamanLogin');
+            return redirect()->route('login');
         } else {
             # code...
-            return redirect()->route('halamanLogin');
+            return redirect()->route('login');
         }
         
     }
@@ -75,13 +91,27 @@ class LoginController extends Controller
         return view('register');
     }
 
+    function index(){
+        return view('login');
+    }
+
     function postRegister(Request $kiriman){
-        $this->validate($kiriman,[
+        $validator = Validator::make($kiriman->all(), [
             'name' => 'required|min:4',
             'username' => 'required|min:4',
             'email' => 'required|email|unique:pembeli',
             'password' => 'required|min:6|confirmed'
-        ]);
+            ]);
+            if ($validator->fails()) {
+                alert()->error('','Form isian tidak boleh kosong');
+                return back();
+            }
+        // $this->validate($kiriman,[
+        //     'name' => 'required|min:4',
+        //     'username' => 'required|min:4',
+        //     'email' => 'required|email|unique:pembeli',
+        //     'password' => 'required|min:6|confirmed'
+        // ]);
         pembeli::create([
             'nama' => $kiriman->name,
             'username' => $kiriman->username,
@@ -99,6 +129,7 @@ class LoginController extends Controller
         //     'password' => Hash::make($kiriman->password),
         //     'remember_token' => NULL
         // ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Anda berhasil
+        registrasi akun!');
     }
 }

@@ -29,7 +29,7 @@
                                     </header>
                                     <div class="panel-body">
                                         <div class="form">
-                                        <form class="form-validate form-horizontal" id="feedback_form" method="get" action="/tambahKatalog">
+                                        <form class="form-validate form-horizontal" id="feedback_form" method="get" action="/tambahKatalog" enctype="multipart/form-data">
                                             <div class="form-group ">
                                             <label for="cname" class="control-label col-lg-2">Nama Tanaman <span class="required">*</span></label>
                                             <div class="col-lg-10">
@@ -46,6 +46,12 @@
                                             <label for="curl" class="control-label col-lg-2">Harga<span class="required">*</span></label>
                                             <div class="col-lg-10">
                                                 <input class="form-control "  type="text" name="harga" />
+                                            </div>
+                                            </div>
+                                            <div class="form-group ">
+                                            <label for="curl" class="control-label col-lg-2">Gambar<span class="required">*</span></label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control "  type="file" name="gambar" />
                                             </div>
                                             </div>
                                             <div class="form-group">

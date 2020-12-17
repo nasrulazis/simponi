@@ -829,7 +829,9 @@ section {
 }
 .services .icon-box img {
   width: 100%;
+  height: 350px;
   margin: -10% 0;
+  object-fit: cover;
   
 }
 .services .icon-box .image {

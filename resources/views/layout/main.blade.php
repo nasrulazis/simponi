@@ -5,5 +5,6 @@
     @include ('layout.navbar')
     @yield('container')
     @include ('layout.footer')
+    @include('sweetalert::alert')
   </body>
 </html>

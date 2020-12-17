@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\pembeli;
 use Illuminate\Support\Facades\Hash;
 
-class C_Profil extends Controller
+class Profil extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -77,32 +77,38 @@ class C_Profil extends Controller
         $id=$_GET['id'];
         $profil = pembeli::find($id);
         
-        if($request->nama!=null){
+        if($request->nama!=null&&$request->nama!=$profil->nama){
             $this->validate($request,[
                 'nama' => 'required|min:4',                
             ]);
             $profil->nama = $request->nama;
-        }else if($request->username!=null){
+            alert()->success('Sukses','Data berhasil disimpan');
+        }else if($request->username!=null&&$request->username!=$profil->username){
             $profil->username = $request->username;
-        }else if($request->email!=null){
+            alert()->success('Sukses','Data berhasil disimpan');
+        }else if($request->email!=null&&$request->email!=$profil->email){
             $profil->email = $request->email;
+            alert()->success('Sukses','Data berhasil disimpan');
         }else if($request->password!=null){
             $this->validate($request,[                
                 'password' => 'required|min:6|confirmed'
             ]);
             $profil->password = Hash::make($request->password);
-        }else if($request->alamat!=null){
+            alert()->success('Sukses','Data berhasil disimpan');
+        }else if($request->alamat!=null&&$request->alamat!=$profil->alamat){
             $profil->alamat = $request->alamat;
-        }else if($request->jenis_kelamin!=null){
+            alert()->success('Sukses','Data berhasil disimpan');
+        }else if($request->jenis_kelamin!=null&&$request->jenis_kelamin!=$profil->jenis_kelamin){
             $profil->jenis_kelamin = $request->jenis_kelamin;
-        }else if($request->no_hp!=null){
+            alert()->success('Sukses','Data berhasil disimpan');
+        }else if($request->no_hp!=null&&$request->no_hp!=$profil->no_hp){
             $profil->no_hp = $request->no_hp;
+            alert()->success('Sukses','Data berhasil disimpan');
         }else{
-            
+            alert()->warning('Gagal','Tidak ada perubahan');
         }
         $profil->save();
-
-        return back()->withMessage("Data berhasil disimpan");                          
+        return back();                   
     }
 
     /**
