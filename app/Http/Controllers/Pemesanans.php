@@ -99,7 +99,7 @@ class Pemesanans extends Controller
             $pemesanan->total_harga +=$data->harga; 
         }       
         $pemesanan->update();
-        alert()->success('Berhasil','menambahkan produk ke keranjang');
+        alert()->success('','Data pesanan produk berhasil ditambahkan');
        return back();
 
 

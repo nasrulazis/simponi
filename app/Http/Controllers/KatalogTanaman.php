@@ -66,7 +66,7 @@ class KatalogTanaman extends Controller
     {
         $validator = Validator::make($request->all(), [
             'namatanaman' => 'required|min:4',
-            'stok' => 'required',
+            'stok' => 'required|min:1',
             'harga' => 'required|min:3',
             'gambar' => 'image|mimes:jpeg,jpg,png'
             ]);

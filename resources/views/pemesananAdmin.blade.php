@@ -70,11 +70,11 @@
                                     </div>
                                 </div>
                             @elseif($data->status==1)
-                                <p>Menunggu Bukti Pembayaran</p>
+                                <p>Menunggu Pembayaran</p>
                             @elseif($data->status==4)
-                                <p>Pesanan Selesai</p>
+                                <p>Selesai</p>
                             @else
-                                <p>Terverifikasi</p>
+                                <p>Dibayar</p>
                             @endif
                             </td>
 

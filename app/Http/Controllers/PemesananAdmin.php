@@ -15,7 +15,7 @@ class PemesananAdmin extends Controller
      */
     public function index()
     {
-        $pemesanan = pemesanan::orderBy('updated_at', 'desc')->get();
+        $pemesanan = pemesanan::orderBy('tanggal', 'desc')->get();
         return view('pemesananAdmin',['pemesanan' => $pemesanan]);
     }
 

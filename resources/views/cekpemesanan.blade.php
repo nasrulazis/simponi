@@ -36,11 +36,11 @@
                 if($angka_status==1){
                   $text_status="Menunggu Pembayaran";
                 }else if($angka_status==2){
-                  $text_status="Menunggu Konfirmasi Pembayaran";
+                  $text_status="Dibayar!";
                 }else if($angka_status==3){
-                  $text_status="Terkonfirmasi Barang sedang dikirim";
+                  $text_status="Dikirim!";
                 }else{
-                  $text_status="Barang Terkirim";                
+                  $text_status="Selesai!";                
                 }
                 $tanggal=date_create($data->tanggal);
               ?>
@@ -87,10 +87,9 @@
                           <div>{{number_format(floatval($data->total_harga))}}</div>
                           </div>
                         @if($data->status!=4)
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <form action="{{route('selesaikanpemesanan')}}?id={{$data->id}}" method="post" >
                         @csrf
-                        <button type="submit" class="btn btn-success">Selesaikan Pesanan</button>
+                        <button type="submit" class="btn btn-success">Verifikasi Produk Telah Sampai</button>
                         </form>
                         @endif
                       </div>

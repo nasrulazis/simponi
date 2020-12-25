@@ -39,12 +39,16 @@ class ChatAdmin extends Controller
     public function store(Request $request)
     {
         $id=$_GET['id'];
+        if(!empty($request->chat)){
         $chat=New chat;
         $chat->tulis_pesan=$request->chat;
         $chat->id_pembeli=$id;
         $chat->id_penjual=1;
         $chat->status=2;
         $chat->save();
+        }else{
+            alert()->info('','Data pesan tidak boleh kosong');
+        }
 
         return back();
     }

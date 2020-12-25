@@ -50,6 +50,8 @@ class Chats extends Controller
             $chat->status=1;
             $chat->save();
             
+        }else{
+            alert()->info('','Data pesan tidak boleh kosong');
         }
         return back();
         

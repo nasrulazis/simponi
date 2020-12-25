@@ -60,7 +60,7 @@
                                                 <div class="form-group ">
                                                     <label for="curl" class="control-label col-lg-2">Keterangan<span class="required">*</span></label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control "  type="text" name="keterangan" />
+                                                        <input class="form-control "  type="text" name="keterangan" value="{{$data->keterangan}}"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">

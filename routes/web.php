@@ -43,7 +43,7 @@ Route::post('/selesaikanpemesanan', 'Pemesanans@selesaikanpemesanan')->name('sel
 
 //penjual
 Route::get('/admin', 'PagesController@admin')->middleware('auth:penjual')->name('admin');
-Route::get('/pencatatan', 'PagesController@pencatatan')->middleware('auth:penjual')->name('pencatatan');
+Route::get('/pencatatan', 'PertumbuhanTanaman@index')->middleware('auth:penjual')->name('pencatatan');
 Route::get('/editkatalogAdmin', 'KatalogTanaman@edit')->middleware('auth:penjual')->name('editkatalog');
 Route::post('/editkatalogAdmin', 'KatalogTanaman@update')->middleware('auth:penjual')->name('editkatalog');
 Route::get('/katalogAdmin', 'KatalogTanaman@katalogAdmin')->middleware('auth:penjual')->name('katalogadmin');

@@ -19,8 +19,8 @@ class PertumbuhanTanaman extends Controller
     }
     public function index()
     {
-        $pertumbuhan_tanaman = pertumbuhan_tanaman::All();
-        return view('pencatatan', ['pertumbuhan_tanaman' => $pertumbuhan_tanaman]);
+        $pertumbuhan_tanaman = pertumbuhan_tanaman::orderBy('tanggal_penanaman', 'asc')->get();
+        return view('pencatatan', compact('pertumbuhan_tanaman'));
     }
 
     /**
